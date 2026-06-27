@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+mysql-connector-python
+PyMuPDF
+langgraph
+langchain
+langchain-openai
+pydantic
