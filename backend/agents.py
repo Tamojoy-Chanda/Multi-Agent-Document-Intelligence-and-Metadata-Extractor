@@ -3,7 +3,7 @@ from typing import TypedDict, Annotated, Dict, Any, Type
 from langgraph.graph import StateGraph, END
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.pydantic_v1 import BaseModel, Field
+from pydantic import BaseModel, Field
 
 # Ensure API key is available
 # os.environ["OPENAI_API_KEY"] = "your-key"
@@ -28,7 +28,7 @@ class ContractMetadata(BaseModel):
     key_terms: str = Field(description="Brief summary of key terms")
 
 def classify_node(state: AgentState):
-    llm = ChatOpenAI(temperature=0, model="gpt-4o-mini")
+    llm = ChatOpenAI(temperature=0, model="gpt-4o-mini", base_url="https://models.inference.ai.azure.com")
     prompt = ChatPromptTemplate.from_messages([
         ("system", "You are a document classifier. Classify the following text into one of these categories: Invoice, Contract, Technical Spec, Other."),
         ("human", "{text}")
@@ -38,7 +38,7 @@ def classify_node(state: AgentState):
     return {"category": result.category}
 
 def extract_node(state: AgentState):
-    llm = ChatOpenAI(temperature=0, model="gpt-4o-mini")
+    llm = ChatOpenAI(temperature=0, model="gpt-4o-mini", base_url="https://models.inference.ai.azure.com")
     category = state["category"]
     
     if "Invoice" in category:
