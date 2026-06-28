@@ -61,7 +61,14 @@
                 {{ doc.filename }}
               </td>
               <td><span class="badge" [ngClass]="doc.category.toLowerCase()">{{ doc.category }}</span></td>
-              <td class="metadata-cell">{{ formatMetadata(doc.metadata_json) }}</td>
+              <td class="metadata-cell">
+                <details>
+                  <summary>View Metadata</summary>
+                  <div class="metadata-content">
+                    {{ formatMetadata(doc.metadata_json) }}
+                  </div>
+                </details>
+              </td>
               <td class="date-cell">{{ doc.created_at | date:'medium' }}</td>
             </tr>
           </tbody>

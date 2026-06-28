@@ -185,6 +185,7 @@ input[type="file"] {
   padding: 1rem;
   border-bottom: 1px solid var(--border-color);
   font-size: 0.9rem;
+  vertical-align: top;
 }
 
 .documents-table tr:last-child td {
@@ -204,10 +205,52 @@ input[type="file"] {
 
 .metadata-cell {
   color: var(--text-secondary);
-  max-width: 300px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  min-width: 350px;
+  width: 45%;
+  word-break: break-word;
+}
+
+.metadata-cell details {
+  cursor: pointer;
+}
+
+.metadata-cell summary {
+  font-weight: 600;
+  color: var(--primary-color);
+  outline: none;
+  list-style: none;
+}
+
+.metadata-cell summary::-webkit-details-marker {
+  display: none;
+}
+
+.metadata-cell summary::before {
+  content: '▶';
+  display: inline-block;
+  margin-right: 0.5rem;
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.metadata-cell details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.metadata-cell summary:hover {
+  text-decoration: underline;
+}
+
+.metadata-content {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background-color: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  white-space: pre-wrap;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  line-height: 1.4;
 }
 
 .date-cell {

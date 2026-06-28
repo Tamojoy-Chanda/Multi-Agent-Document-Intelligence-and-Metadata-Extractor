@@ -37,6 +37,8 @@ async def upload_pdf(file: UploadFile = File(...)):
     try:
         agent_result = process_document_text(text)
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Agent workflow failed: {str(e)}")
     
     # Save to database
