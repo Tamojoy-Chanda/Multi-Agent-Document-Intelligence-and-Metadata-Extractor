@@ -77,7 +77,3 @@ Before you begin, ensure you have the following installed:
    npm start
    ```
 4. Open your browser and navigate to `http://localhost:4200` to start extracting metadata!
-
-## Security Note
-
-Do not hardcode or commit API keys or database credentials to GitHub. Always use the `.env` file, and ensure `.gitignore` is properly configured to ignore it.
